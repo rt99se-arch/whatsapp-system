@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "baileys": "^7.0.0-rc.9",
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1",
+    "pdfkit": "^0.18.0",
+    "puppeteer": "^24.40.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply Now</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row input {
+      flex: 1;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 5px rgba(42,82,152,0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Apply Now</h2>
+
+    <form action="/submit" method="POST">
+
+      <label>Full Name</label>
+      <div class="row">
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="middleName" placeholder="Middle Name">
+        <input type="text" name="lastName" placeholder="Last Name" required>
+      </div>
+
+      <label>Mobile Number</label>
+      <input type="tel" name="mobile" placeholder="Enter 10 digit mobile"
+        pattern="[0-9]{10}" maxlength="10" required>
+
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="Enter email"
+        oninput="this.value = this.value.toLowerCase()" required>
+
+      <label>Date of Birth</label>
+      <input type="text" name="dob" id="dob" placeholder="DD/MM/YYYY" maxlength="10" required>
+
+      <label>PAN Card Number</label>
+      <input type="text" name="pan" placeholder="ABCDE1234F" required>
+
+      <label>Your Details</label>
+      <textarea name="message" placeholder="Enter your details"></textarea>
+
+      <button type="submit">Submit Application</button>
+
+    </form>
+  </div>
+
+  <script>
+    // Auto DOB format DD/MM/YYYY
+    document.getElementById("dob").addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+      if (value.length >= 3 && value.length <= 4)
+        value = value.slice(0,2) + "/" + value.slice(2);
+      else if (value.length >= 5)
+        value = value.slice(0,2) + "/" + value.slice(2,4) + "/" + value.slice(4,8);
+
+      e.target.value = value;
+    });
+  </script>
+
+</body>
+</html>
